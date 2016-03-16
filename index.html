@@ -271,6 +271,8 @@
   				sendMessage(email);
   				$( "#email_input1" ).val("");
   				swal("Thanks!", "We'll be in touch.", "success");
+  			} else{
+  				swal({   title: "Invalid Email",   text: "Double Check Your Email Please",   timer: 2000,   showConfirmButton: false });
   			}
 		});
 
@@ -281,6 +283,8 @@
   				sendMessage(email);
   				$( "#email_input2" ).val("");
   				swal("Thanks!", "We'll be in touch.", "success");
+  			} else{
+  				swal({   title: "Invalid Email",   text: "Double Check Your Email Please",   timer: 2000,   showConfirmButton: false });
   			}
 		});
 
