@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="css/ionicons.min.css" rel="stylesheet">
     <link href="css/custom-animations.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
     <link href="css/style.css" rel="stylesheet">
 
 
@@ -42,6 +43,11 @@
 						<br><br><br><br><br><br>
 						<h1><strong>OmniCoach</strong></h1>
 						<br>
+						<div class="row">
+				    				<input id="email_input1" type="email" name="email" class="subscribe-input" placeholder="Enter your e-mail here..." required>
+									<button id="email_submit1" class='btn btn-lg btn-green subscribe-submit'>Subscribe</button>
+						</div>
+			</div><!--/row -->
 						
 				</div>
 			</div><!--/row -->
@@ -107,7 +113,7 @@
 			<div class="row mt">
 				<div class="col-md-4">
 					<h4 class="green">STEP 1</h4>
-					<p>Sign up for a school trial, and have your athletes sign up. We'll set up everything you need, no need to lift a finger</p>
+					<p>Sign up for a school trial, and have your athletes sign up. We'll set up everything you need, no need to lift a finger.</p>
 					<h4 class="green mt">STEP 2</h4>
 					<p>Select or quickly create a workout, select a team, and take a breather. You're done.</p>
 				</div><!--/col-md-4-->
@@ -182,7 +188,7 @@
 				          <img src="img/ui-01.jpg" class="img-circle aligncenter" width="120" alt="First slide">
 				          <h3>Bilal Ahmad</h3>
 				          <hr class="aligncenter">
-				          <p>Technial Lead</p>
+				          <p>Technical Lead</p>
 				        </div>
 				        <div class="item">
 				          <img src="img/ui-02.jpg" class="img-circle aligncenter" width="120"  alt="Second slide">
@@ -217,10 +223,8 @@
 			
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 mt centered">
-					<form role="form" action="register.php" method="post" enctype="plain"> 
-	    				<input type="email" name="email" class="subscribe-input" placeholder="Enter your e-mail here..." required>
-						<button class='btn btn-lg btn-green subscribe-submit' type="submit">Subscribe</button>
-					</form>
+	    				<input id="email_input2" type="email" name="email" class="subscribe-input" placeholder="Enter your e-mail here..." required>
+						<button id="email_submit2" class='btn btn-lg btn-green subscribe-submit'>Subscribe</button>
 				</div>
 			</div><!--/row -->
 		</div><!--/container -->
@@ -248,5 +252,57 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/retina-1.1.0.js"></script>
     <script src="js/jquery.unveilEffects.js"></script>
+    <script src="js/sweetalert.min.js"></script> 
+	<script src="https://l2.io/ip.js?var=userip"></script>
+    <script src="https://cdn.smooch.io/smooch.min.js"></script>
+	<script>
+	$( document ).ready(function() {
+	    Smooch.on('ready', function(){
+	        // Smooch.updateUser({
+	        //     givenName: userip,
+	        // });
+	        sendMessage("A visitor from "+userip);
+	    });
+
+		Smooch.init({appToken: '8pb7v6pvlxqmjvcx5pxyhsvry',embedded: true});
+		$( "#email_submit1" ).click(function() {
+			var email = $( "#email_input1" ).val()
+  			if (validateEmail(email)){
+  				sendMessage(email);
+  				$( "#email_input1" ).val("");
+  				swal("Thanks!", "We'll be in touch.", "success");
+  			}
+		});
+
+    	$( "#email_submit2" ).click(function() {
+  			var email = $( "#email_input2" ).val()
+  			//Smooch.sendMessage();
+  			if (validateEmail(email)){
+  				sendMessage(email);
+  				$( "#email_input2" ).val("");
+  				swal("Thanks!", "We'll be in touch.", "success");
+  			}
+		});
+
+		function sendMessage(message){
+			Smooch.sendMessage(message);
+		}
+
+		function validateEmail(email) {
+    		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    		return re.test(email);
+		}
+
+	});
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-67866639-3', 'auto');
+	  ga('send', 'pageview');
+	</script>
   </body>
 </html>
