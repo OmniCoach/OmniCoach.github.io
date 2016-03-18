@@ -258,18 +258,19 @@
 	<script>
 	$( document ).ready(function() {
 	    Smooch.on('ready', function(){
-	        Smooch.updateUser({
-			    givenName: 'OmniCoach',
-			    surname: 'Visitor',
-			    properties: {
-			      'ip': userip
-			    }
-			});
+	        
 	        sendMessage("A visitor from "+userip);
 	    });
 
-		Smooch.init({appToken: '8pb7v6pvlxqmjvcx5pxyhsvry',embedded: true, userId: 'visitor',
-});
+		Smooch.init({appToken: '8pb7v6pvlxqmjvcx5pxyhsvry',embedded: true, 
+		    givenName: 'OmniCoach',
+		    surname: 'Visitor',
+		    userId: 'visitor',
+		    properties: {
+		      'ip': userip
+		    },
+			
+		});
 		$( "#email_submit1" ).click(function() {
 			var email = $( "#email_input1" ).val()
   			if (validateEmail(email)){
