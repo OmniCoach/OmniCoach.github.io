@@ -258,9 +258,13 @@
 	<script>
 	$( document ).ready(function() {
 	    Smooch.on('ready', function(){
-	        // Smooch.updateUser({
-	        //     givenName: userip,
-	        // });
+	        Smooch.updateUser({
+			    givenName: 'OmniCoach',
+			    surname: 'Visitor',
+			    properties: {
+			      'ip': userip
+			    }
+			});
 	        sendMessage("A visitor from "+userip);
 	    });
 
