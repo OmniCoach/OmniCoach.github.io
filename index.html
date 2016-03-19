@@ -257,15 +257,21 @@
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
 	<script>
 	$( document ).ready(function() {
+		var visitorId = "OC-Visitor";
+		var emailID = "OC-Email";
 	    Smooch.on('ready', function(){
-	        //sendMessage("A visitor from "+userip);
+	        sendMessage("A visitor from "+userip);
 	    });
 
-		Smooch.init({appToken: '8pb7v6pvlxqmjvcx5pxyhsvry',embedded: true, userId: "ocuser"});
+		Smooch.init({appToken: '8pb7v6pvlxqmjvcx5pxyhsvry',embedded: true, userId: visitorId, 
+			givenName: 'omnicoach',
+    		surname: 'fit',
+    	});
+
 		$( "#email_submit1" ).click(function() {
-			var email = $( "#email_input1" ).val()
+			var email = $( "#email_input1" ).val();
   			if (validateEmail(email)){
-  				sendMessage(email);
+  				sendMessage("Subscription from "+ email);
   				$( "#email_input1" ).val("");
   				swal("Thanks!", "We'll be in touch.", "success");
   			} else{
@@ -275,9 +281,16 @@
 
     	$( "#email_submit2" ).click(function() {
   			var email = $( "#email_input2" ).val()
-  			//Smooch.sendMessage();
   			if (validateEmail(email)){
+
+  				// Smooch.updateUser({
+				//     userId: emailID,
+				// });
+
   				sendMessage(email);
+
+  				
+
   				$( "#email_input2" ).val("");
   				swal("Thanks!", "We'll be in touch.", "success");
   			} else{
