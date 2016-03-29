@@ -257,15 +257,15 @@
     <script src="https://cdn.smooch.io/smooch.min.js"></script>
 	<script>
 	$( document ).ready(function() {
-		var visitorId = "OC-Visitor";
-		var emailID = "OC-Email";
+		var visitorId = "OC-V";
+		var emailID = "OC-E";
 	    Smooch.on('ready', function(){
 	        sendMessage("A visitor from "+userip);
 	    });
 
 		Smooch.init({appToken: '8pb7v6pvlxqmjvcx5pxyhsvry',embedded: true, userId: visitorId, 
-			givenName: 'omnicoach',
-    		surname: 'fit',
+			//givenName: 'omnicoach',
+    		//surname: 'fit',
     	});
 
 		$( "#email_submit1" ).click(function() {
